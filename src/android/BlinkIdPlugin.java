@@ -123,7 +123,7 @@ public class BlinkIdPlugin extends CordovaPlugin {
                                 jsonObject.put("opt2", ((MRTDRecognitionResult) rd).getOpt2());
                                 jsonObject.put("mrzText", ((MRTDRecognitionResult) rd).getMRZText());
 
-                                this.callbackContext.success(jsonObject);
+                                this.callbackContext.success(jsonObject.toString());
                                // break;
                             } catch (JSONException e) {
                                 Log.e("MicroBlink", e.toString());

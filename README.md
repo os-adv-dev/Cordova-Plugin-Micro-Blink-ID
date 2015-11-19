@@ -126,7 +126,7 @@ The success callback gets a JSON object with the following contents:
 
 #### Contributors
 - OutSystems - Mobility Experts
-    - João Gonçalves, <joão.goncalves@outsystems.com>
+    - João Gonçalves, <joao.goncalves@outsystems.com>
     - Rúben Gonçalves, <ruben.goncalves@outsystems.com>
     - Vitor Oliveira, <vitor.oliveira@outsystems.com>
 
