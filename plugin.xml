@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="com.os.mobile.blinkid"
-      version="0.0.2">
+      version="0.0.3">
     <name>Blink Id Plugin</name>
     <description>Plugin Read Card ID and to Scan Documents</description>
     <license>MIT License</license>
