@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="com.os.mobile.blinkid"
-      version="0.0.1">
+      version="0.0.2">
     <name>Blink Id Plugin</name>
     <description>Plugin Read Card ID and to Scan Documents</description>
     <license>MIT License</license>
@@ -54,4 +54,18 @@
     <framework src="CoreVideo.framework" weak="true" /> 
       
     </platform>
+    
+    <!-- Android -->
+    <platform name="android">
+        
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="BlinkIdPlugin">
+                <param name="android-package" value="com.os.mobile.blinkid.BlinkIdPlugin"/>
+            </feature>
+        </config-file>
+        
+        <source-file src="src/android/BlinkIdPlugin.java" target-dir="src/com/os/mobile/blinkid" />
+        
+    </platform>
+    
 </plugin>
