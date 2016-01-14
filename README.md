@@ -20,7 +20,7 @@ As with all the cordova plugins, the plugin isn't available until the execution 
 ```javascript
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-    console.log(FileTransfer);
+    // ...
 }
 ```
 
