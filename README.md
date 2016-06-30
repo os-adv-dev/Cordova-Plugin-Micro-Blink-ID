@@ -36,31 +36,6 @@ function onDeviceReady() {
 ```shell
     cordova plugin add https://github.com/OutSystems/Cordova-Plugin-Micro-Blink-ID.git
 ``` 
-### For Android add the MicroBlink Library
-
-In your `build.gradle` you first need to add _BlinkID_ maven repository to repositories list:
-
-```
-repositories {
-	maven { url 'http://maven.microblink.com' }
-}
-```
-
-After that, you just need to add _BlinkID_ as a dependency to your application:
-
-```
-dependencies {
-    compile 'com.microblink:blinkid:1.9.0@aar'
-}
-```
-
-For Android, you need to use the SDK Version 21
-```
-    compileSdkVersion 21
-    buildToolsVersion "21.0.0"
-
-```
-
 
 # Blink ID
 

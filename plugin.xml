@@ -65,7 +65,7 @@
         </config-file>
         
         <source-file src="src/android/BlinkIdPlugin.java" target-dir="src/com/os/mobile/blinkid" />
-        
+		<framework src="src/android/microblink.gradle" custom="true" type="gradleReference" />        
     </platform>
     
 </plugin>
