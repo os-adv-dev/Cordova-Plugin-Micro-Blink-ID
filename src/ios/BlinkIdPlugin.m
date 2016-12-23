@@ -221,10 +221,36 @@
             title = @"USDL";
             message = [usdlResult description];
 
-            
-            // TODO
+            NSDictionary *jsonObj = [ [NSDictionary alloc]
+                                     initWithObjectsAndKeys :
+                                        @"true", @"isParsed",
+                                        @"", @"issuer",
+                                        [usdlResult getStringElementUsingGuessedEncoding:@"Customer ID Numberp"], @"documentNumber",
+                                        @"", @"documentCode",
+                                        [usdlResult getStringElementUsingGuessedEncoding:@"Document Expiration Date"], @"dateOfExpiry",
+                                        [usdlResult getStringElementUsingGuessedEncoding:@"Customer First Name"], @"primaryId",
+                                        [usdlResult getStringElementUsingGuessedEncoding:@"Customer Name"], @"secondaryId",
+                                        [usdlResult getStringElementUsingGuessedEncoding:@"Date of Birth"] , @"dateOfBirth",
+                                        [usdlResult getStringElementUsingGuessedEncoding:@"Country Identification"], @"nationality",
+                                        [usdlResult getStringElementUsingGuessedEncoding:@"SEX"] , @"sex",
+                                        @"", @"opt1",
+                                        @"", @"opt2",
+                                        [usdlResult getStringElementUsingGuessedEncoding:@"pdf417"], @"mrzText",
+                                     nil
+                                     ];
+            NSError* error ;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonObj
+                                                               options:NSJSONWritingPrettyPrinted
+                                                                 error:&error];
+            NSString *jsonString = @"";
+            if (! jsonData) {
+                NSLog(@"Got an error: %@", error);
+            } else {
+                jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            }
+        
             __block CDVPluginResult* pluginResult = nil;
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:jsonString];
             
             [self.commandDelegate sendPluginResult:pluginResult callbackId:self.commandHelper.callbackId];
             
