@@ -221,23 +221,30 @@
             title = @"USDL";
             message = [usdlResult description];
 
-            NSDictionary *jsonObj = [ [NSDictionary alloc]
-                                     initWithObjectsAndKeys :
-                                        @"true", @"isParsed",
-                                        @"", @"issuer",
-                                        [usdlResult getStringElementUsingGuessedEncoding:@"Customer ID Numberp"], @"documentNumber",
-                                        @"", @"documentCode",
-                                        [usdlResult getStringElementUsingGuessedEncoding:@"Document Expiration Date"], @"dateOfExpiry",
-                                        [usdlResult getStringElementUsingGuessedEncoding:@"Customer First Name"], @"primaryId",
-                                        [usdlResult getStringElementUsingGuessedEncoding:@"Customer Name"], @"secondaryId",
-                                        [usdlResult getStringElementUsingGuessedEncoding:@"Date of Birth"] , @"dateOfBirth",
-                                        [usdlResult getStringElementUsingGuessedEncoding:@"Country Identification"], @"nationality",
-                                        [usdlResult getStringElementUsingGuessedEncoding:@"SEX"] , @"sex",
-                                        @"", @"opt1",
-                                        @"", @"opt2",
-                                        [usdlResult getStringElementUsingGuessedEncoding:@"pdf417"], @"mrzText",
-                                     nil
-                                     ];
+            NSDictionary *jsonObj = [[NSDictionary alloc]
+                                      initWithObjectsAndKeys:
+                                        [usdlResult getField:kPPIssuerIdentificationNumber], @"issuer",
+                                        [usdlResult getField:kPPCountryIdentification], @"nationality",
+                                        [usdlResult getField:kPPCustomerIdNumber], @"documentNumber",
+                                        [usdlResult getField:kPPCustomerFamilyName], @"customerFamilyName",
+                                        [usdlResult getField:kPPCustomerFirstName], @"customerFirstName",
+                                        [usdlResult getField:kPPDateOfBirth], @"dateOfBirth",
+                                        [usdlResult getField:kPPEyeColor], @"eyeColor",
+                                        [usdlResult getField:kPPHeight], @"height",
+                                        [usdlResult getField:kPPAddressStreet], @"addressStreet",
+                                        [usdlResult getField:kPPAddressCity], @"addressCity",
+                                        [usdlResult getField:kPPAddressJurisdictionCode], @"addressJurisdictionCode",
+                                        [usdlResult getField:kPPAddressPostalCode], @"addressPostalCode",
+                                        [usdlResult getField:kPPDocumentIssueDate], @"documentIssueDate",
+                                        [usdlResult getField:kPPJurisdictionVersionNumber], @"jurisdictionVersionNumber",
+                                        [usdlResult getField:kPPJurisdictionVehicleClass], @"jurisdictionVehicleClass",
+                                        [usdlResult getField:kPPCustomerFullName], @"customerFullName",
+                                        [usdlResult getField:kPPDocumentExpirationDate], @"dateOfExpiry",
+                                        [usdlResult getField:kPPSex], @"sex",
+                                        @"true", @"isLicenseDriver",
+                                        nil
+                                        ];
+
             NSError* error ;
             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonObj
                                                                options:NSJSONWritingPrettyPrinted
