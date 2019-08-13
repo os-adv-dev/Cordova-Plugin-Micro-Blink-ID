@@ -8,6 +8,7 @@ import com.microblink.MicroblinkSDK;
 import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.entities.recognizers.blinkid.mrtd.MrtdRecognizer;
 import com.microblink.entities.recognizers.blinkid.mrtd.MrzResult;
+import com.microblink.results.date.DateResult;
 import com.microblink.uisettings.ActivityRunner;
 import com.microblink.uisettings.DocumentUISettings;
 import com.microblink.util.Log;
@@ -106,10 +107,10 @@ public class BlinkIdPlugin extends CordovaPlugin {
             jsonObject.put("issuer", mrzResult.getIssuer());
             jsonObject.put("documentNumber", mrzResult.getDocumentNumber());
             jsonObject.put("documentCode", mrzResult.getDocumentCode());
-            jsonObject.put("dateOfExpiry", mrzResult.getDateOfExpiry());
+            jsonObject.put("dateOfExpiry", dateFormatted(mrzResult.getDateOfExpiry()));
             jsonObject.put("primaryId", mrzResult.getPrimaryId());
             jsonObject.put("secondaryId", mrzResult.getSecondaryId());
-            jsonObject.put("dateOfBirth", mrzResult.getDateOfBirth());
+            jsonObject.put("dateOfBirth", dateFormatted(mrzResult.getDateOfBirth()));
             jsonObject.put("nationality", mrzResult.getNationality());
             jsonObject.put("sex", mrzResult.getGender());
             jsonObject.put("opt1", mrzResult.getOpt1());
@@ -144,5 +145,19 @@ public class BlinkIdPlugin extends CordovaPlugin {
         // start scan activity based on UI settings
         this.cordova.setActivityResultCallback(this);
         ActivityRunner.startActivityForResult(this.cordova.getActivity(), MY_BLINKID_REQUEST_CODE, documentUISettings);
+    }
+
+    /**
+     * Get the date from DateResult
+     *
+     * @param value the date unformatted
+     * @return the date correct formatted
+     */
+    private static String dateFormatted(DateResult value) {
+        String valueFormatted = "";
+        if (value != null && value.getDate() != null) {
+            return value.getDate().toString();
+        }
+        return valueFormatted;
     }
 }
