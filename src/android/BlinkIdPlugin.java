@@ -153,10 +153,11 @@ public class BlinkIdPlugin extends CordovaPlugin {
      * @param value the date unformatted
      * @return the date correct formatted
      */
-    private static String dateFormatted(DateResult value) {
+    private String dateFormatted(DateResult value) {
         String valueFormatted = "";
         if (value != null && value.getDate() != null) {
-            return value.getDate().toString();
+            String[] val = value.getDate().toString().split("[.]");
+            return val[2] + "-" + val[1] + "-" + val[0];
         }
         return valueFormatted;
     }
