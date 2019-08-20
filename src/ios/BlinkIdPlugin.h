@@ -9,10 +9,7 @@
 #import <Cordova/CDVPlugin.h>
 #import <MicroBlink/MicroBlink.h>
 
-@interface BlinkIdPlugin : CDVPlugin
-
-@property (strong, nonatomic) CDVInvokedUrlCommand* commandHelper;
-@property (strong, nonatomic) NSString* mLicenseKey;
+@interface BlinkIdPlugin : CDVPlugin <MBDocumentOverlayViewControllerDelegate>
 
 - (void) readCardId:(CDVInvokedUrlCommand*)command;
 - (void) scannDocument:(CDVInvokedUrlCommand*)command;
