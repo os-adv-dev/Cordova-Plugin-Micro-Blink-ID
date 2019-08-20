@@ -28,7 +28,7 @@
         
         <!-- MicroBlink frameworks -->
         <resource-file src="src/ios/libs/Microblink.bundle" />
-        <framework src="src/ios/libs/Microblink.framework" custom="true" embed="true" target-dir="." />
+        <framework src="src/ios/libs/MicroBlinkFramework/Microblink.framework" custom="true" embed="true" target-dir="." />
 
         <!-- System frameworks -->
         <framework src="libc++.tbd" />
@@ -46,6 +46,8 @@
         <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
             <string>Read ID Cards</string>
         </config-file>
+
+        <hook type="before_plugin_install" src="hooks/handle_microblink_framework.js" />
 
     </platform>
     
