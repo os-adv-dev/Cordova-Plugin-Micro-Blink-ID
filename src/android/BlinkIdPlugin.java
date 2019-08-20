@@ -61,14 +61,15 @@ public class BlinkIdPlugin extends CordovaPlugin {
 
         if (args != null) {
             /* Get the license key from cordova */
-            String licenseKey = args.getString(0);
+            JSONObject object = args.getJSONObject(0);
+            String licenceKeY = object.getString("android");
 
-            if (licenseKey == null || licenseKey.length() == 0) {
+            if (licenceKeY == null) {
                 callbackContext.error("Is mandatory a license key to use the this plugin");
                 return;
+            } else {
+                startScanner(licenceKeY);
             }
-
-            startScanner(licenseKey);
         }
     }
 
