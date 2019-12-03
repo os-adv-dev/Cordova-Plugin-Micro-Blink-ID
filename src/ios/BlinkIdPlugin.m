@@ -28,7 +28,7 @@
     self.commandHelper = command;
 
 	if([command.arguments count] && [command.arguments count] > 0) {
-		licenseKey = [command.arguments objectAtIndex:0][@"ios"];
+		licenseKey = [command.arguments objectAtIndex:0];
 	}
         
     /** Check there is a license key */
