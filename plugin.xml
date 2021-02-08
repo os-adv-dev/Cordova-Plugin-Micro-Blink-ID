@@ -14,7 +14,7 @@
         <clobbers target="cordova.plugins.blinkId" />
         <clobbers target="plugin.blinkId" />
     </js-module>
-
+    <hook type="before_plugin_install" src="hooks/npmInstall.js" />
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
