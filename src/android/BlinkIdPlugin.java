@@ -46,14 +46,14 @@ public class BlinkIdPlugin extends CordovaPlugin {
     /**
      * Method to launch Card ID Reader
      *
-     * @param callbackContext
-     * @param args
+     * @param callbackContext the result of readCard action
+     * @param args the arguments passed for this method
      * @throws JSONException
      */
     private void readCardId(CallbackContext callbackContext, JSONArray args) throws JSONException {
         // check if BlinkID is supported on the device
         RecognizerCompatibilityStatus supportStatus = RecognizerCompatibility
-                .getRecognizerCompatibilityStatus(cordova.getActivity());
+                .getRecognizerCompatibilityStatus(cordova.getContext());
         if (supportStatus != RecognizerCompatibilityStatus.RECOGNIZER_SUPPORTED) {
             callbackContext.error("BlinkID is not supported! Reason: " + supportStatus.name());
             return;
@@ -61,14 +61,14 @@ public class BlinkIdPlugin extends CordovaPlugin {
 
         if (args != null) {
             /* Get the license key from cordova */
-            String licenseKey = args.getString(0);
+            String licenceKeY = args.getString(0);
 
-            if (licenseKey == null || licenseKey.length() == 0) {
+            if (licenceKeY == null) {
                 callbackContext.error("Is mandatory a license key to use the this plugin");
                 return;
+            } else {
+                startScanner(licenceKeY);
             }
-
-            startScanner(licenseKey);
         }
     }
 
@@ -81,12 +81,12 @@ public class BlinkIdPlugin extends CordovaPlugin {
             if (resultCode == Activity.RESULT_OK && intent != null) {
                 onScanSuccess(intent);
             } else {
-                Toast.makeText(cordova.getActivity(), "Scan cancelled!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(cordova.getContext(), "Scan cancelled!", Toast.LENGTH_SHORT).show();
             }
         } else {
             // if PhotoPay activity did not return result, user has probably
             // pressed Back button and cancelled scanning
-            Toast.makeText(cordova.getActivity(), "Scan cancelled!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(cordova.getContext(), "Scan cancelled!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -132,7 +132,8 @@ public class BlinkIdPlugin extends CordovaPlugin {
      */
     private void startScanner(String licenseKey) {
         // Set up your license key
-        MicroblinkSDK.setLicenseKey(licenseKey, this.cordova.getActivity());
+        MicroblinkSDK.setLicenseKey(licenseKey, this.cordova.getContext());
+
         // we'll use Machine Readable Travel Document recognizer
         mMRTDRecognizer = new MrtdRecognizer();
         // put our recognizer in bundle so that it can be sent via intent

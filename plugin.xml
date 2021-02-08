@@ -26,33 +26,29 @@
         <header-file src="src/ios/BlinkIdPlugin.h" />
         <source-file src="src/ios/BlinkIdPlugin.m" />
         
-    <!-- MicroBlink frameworks -->
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/en.strings" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/IDCard.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/IDCard@2x.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/ocr_model.zzip" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/PPbeep.wav" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/torchoff_pressed.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/torchoff_pressed@2x.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/torchoff.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/torchoff@2x.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/torchon_pressed.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/torchon_pressed@2x.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/torchon.png" />
-    <resource-file src="src/ios/libs/MicroBlink.embeddedframework/Resources/torchon@2x.png" />
-    <framework src="src/ios/libs/MicroBlink.embeddedframework/MicroBlink.framework" custom="true" />
-    
-    
-    <!-- System frameworks -->
-    <framework src="libc++.dylib" weak="true" />
-    <framework src="libiconv.dylib" weak="true" />
-    <framework src="AVFoundation.framework" weak="true" />
-    <framework src="AudioToolbox.framework" weak="true" />
-    <framework src="CoreMedia.framework" weak="true" />
-    <framework src="OpenGLES.framework" weak="true" />
-    <framework src="QuartzCore.framework" weak="true" /> 
-    <framework src="CoreVideo.framework" weak="true" /> 
+        <!-- MicroBlink frameworks -->
+        <resource-file src="src/ios/libs/Microblink.bundle" />
+        <framework src="src/ios/libs/MicroBlinkFramework/Microblink.framework" custom="true" embed="true" target-dir="." />
+
+        <!-- System frameworks -->
+        <framework src="libc++.tbd" />
+        <framework src="libiconv.tbd" />
+        <framework src="libz.tbd" />
+        <framework src="AVFoundation.framework" />
+        <framework src="AudioToolbox.framework" />
+        <framework src="CoreMedia.framework" />
+        <framework src="OpenGLES.framework" />
+        <framework src="QuartzCore.framework" /> 
+        <framework src="CoreVideo.framework" />
+        <framework src="Accelerate.framework" /> 
       
+        <preference name="CAMERA_USAGE_DESCRIPTION" default=" " />
+        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>Read ID Cards</string>
+        </config-file>
+
+        <hook type="before_plugin_install" src="hooks/handle_microblink_framework.js" />
+
     </platform>
     
     <!-- Android -->
