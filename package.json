@@ -1,0 +1,34 @@
+{
+  "name": "cordova-plugin-micro-blink-id",
+  "version": "1.0.0",
+  "description": "Cordova \"Open With\" plugin for iOS and Android",
+  "cordova": {
+    "id": "com.os.mobile.blinkid",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/os-adv-dev/Cordova-Plugin-Micro-Blink-ID"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova",
+    "outsystems",
+    "ios",
+    "android"
+  ],
+  "author": "Outsystems",
+  "bugs": {
+    "url": "https://github.com/os-adv-dev/Cordova-Plugin-Micro-Blink-ID/issues"
+  },
+  "homepage": "https://github.com/os-adv-dev/Cordova-Plugin-Micro-Blink-ID",
+  "dependencies": {
+    "adm-zip": "^0.4.13",
+    "q": "^1.5.1"
+  }
+}
